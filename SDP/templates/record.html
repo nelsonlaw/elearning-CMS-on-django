@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_hr.html" %}
+
+    <article>
+        <h1>Completed course for user {{ username }}</h1>
+        <div class="flexbox">
+            {% for course in completed_courses %}
+                <div class="course_container">
+                    <p>Completed data : {{ course.1 }}</p>
+                    <p>{{ course.0.title }}</p>
+                    <p>Description : {{ course.0.description }}</p>
+                    <p>Instructor : {{ course.0.instructor }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_administrator.html" %}
+
+    <article>
+        <form method="post" action="/control_access/">
+            {% csrf_token %}
+            <h2>Control access to the SDP</h2>
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.is_active.label_tag }}</td>
+                    <td>{{ form.is_active }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Change status"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

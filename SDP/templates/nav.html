@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a class="subnav_click" href="#">Category</a></li>
+        <ul class="subnav">
+            {% for item in categories %}
+                <li><a href="/category/{{ item.category_id }}">{{ item.category_name }}</a></li>
+            {% endfor %}
+        </ul>
+    </ul>
+</nav>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header_login.html" %}
+
+
+    <div class="login_box">
+        {% block content %}
+            <form method="post" action="/register/">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>{{ form.employee_name.label_tag }}</td>
+                        <td>{{ form.employee_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password_again.label_tag }}</td>
+                        <td>{{ form.password_again }}</td>
+                    </tr>
+                </table>
+
+                <input type="submit" value="Submit"/>
+            </form>
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>
+

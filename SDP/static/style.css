@@ -1,0 +1,153 @@
+/*General content*/
+
+p {
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+div.container > div.login_box {
+    margin-left: 30%;
+    display: block;
+}
+
+div.container > div.login_box > form {
+    margin-left: 10%;
+    display: block;
+}
+
+body {
+    position: relative;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 25px;
+    text-shadow: none !important;
+    color: #444;
+    padding-top: 35px;
+}
+
+header {
+    color: white;
+    background-color: #9D9E96;
+}
+
+article > .flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+article h1, h2, h3, a, p {
+    clear: right;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+article .order {
+    width: 15px;
+}
+
+article p.answer, a.next {
+    display: none;
+}
+
+article textarea, iframe {
+    margin: 5px;
+}
+
+/*Header*/
+
+header > .header-container-center {
+    padding: 1em;
+    text-align: center;
+}
+
+header > .header-container-center > h1 {
+    margin: 0;
+}
+
+header > .header-container-right {
+    text-align: right;
+    margin-right: 10px;
+}
+
+header > .header-container-right > a.button {
+    color: darkred;
+}
+
+/*Navigation menu on the left*/
+
+nav {
+    float: left;
+    width: 200px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul ul {
+    list-style-type: circle;
+    padding-left: 20px;
+}
+
+nav ul ul.subnav {
+    display: none;
+}
+
+nav ul a {
+    text-decoration: none;
+}
+
+nav ul li a {
+    font-size: 1.2em;
+}
+
+/*Course item*/
+
+div.course_container {
+    outline: #9D9E96 solid thin;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 500px;
+}
+
+div.course_container > a {
+    color: #444;
+    font-weight: lighter !important;
+    font-size: 1.6em;
+    line-height: 1.2em;
+    margin: 5px;
+}
+
+div.course_container > a.enrol {
+    float: right;
+    color: darkred;
+}
+
+/*Module item*/
+
+div.module {
+    outline: #9D9E96 solid thin;
+    margin-bottom: 20px;
+}
+
+div.module > h3 {
+    margin: 5px;
+}
+
+/*Other*/

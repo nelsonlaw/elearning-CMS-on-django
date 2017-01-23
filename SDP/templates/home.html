@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav.html" %}
+
+    <article>
+        <h1>Current taking course</h1>
+        <div class="flexbox">
+            {% for course in taking_courses %}
+                <div class="course_container">
+                    <a href="/course/{{ course.course_id }}">{{ course.title }}</a>
+                    <p>Description : {{ course.description }}</p>
+                    <p>Instructor : {{ course.instructor }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+        <h1>Completed course</h1>
+        <div class="flexbox">
+            {% for course in completed_courses %}
+                <div class="course_container">
+                    <p>Completed data : {{ course.1 }}</p>
+                    <a href="/course/{{ course.0.course_id }}">{{ course.0.title }}</a>
+                    <a class="enrol" href="/enrol/{{ course.0.course_id }}">Retake</a>
+                    <p>Description : {{ course.0.description }}</p>
+                    <p>Instructor : {{ course.0.instructor }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

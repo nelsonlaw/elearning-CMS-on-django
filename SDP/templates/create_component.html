@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_instructor.html" %}
+
+    <article>
+        <form method="post" action="/create_component/{{ module_id }}/{{ type }}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>{{ module_title }}</h2>
+            {% if not type == "quiz" %}
+                <table>
+                    <tr>
+                        <td>{{ form.title.label_tag }}</td>
+                        <td>{{ form.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.content.label_tag }}</td>
+                        <td>{{ form.content }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+            {% if type == "quiz" %}
+                <table>
+                    <tr>
+                        <td>{{ form.title.label_tag }}</td>
+                        <td>{{ form.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.question.label_tag }}</td>
+                        <td>{{ form.question }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.answer.label_tag }}</td>
+                        <td>{{ form.answer }}</td>
+                    </tr>
+                </table>
+            {% endif %}
+            <input type="submit" value="create"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

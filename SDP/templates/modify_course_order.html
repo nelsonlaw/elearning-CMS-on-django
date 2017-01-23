@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+
+    {% include "nav_instructor.html" %}
+
+    <article>
+
+        <h1>{{ select_course.title }}</h1>
+        <form method="post" action="/modify_course_order/{{ course_id }}">
+            {% csrf_token %}
+            {% for module in module_with_components %}
+                <div class="module">
+                    <h2>Module <input type="text" name="order_m{{ module.0.module_id }}" min="1" class="order"
+                                      value="{{ module.0.order }}">:{{ module.0.title }}</h2>
+                    <hr>
+                    {% for component in module.1 %}
+                        <p>Component <input type="text"
+                                            name="order_c{{ component.component_id }}"
+                                            min="1"
+                                            class="order" value="{{ component.order }}"> : {{ component.title }}</p>
+                        {% if component.type == 'text' %}
+                            <p>{{ component.text_content }}</p>
+                        {% endif %}
+                        {% if component.type == 'image' %}
+                            <img width="100%" src="{{ component.image_content.url }}">
+                        {% endif %}
+                        {% if component.type == 'file' %}
+                            <a href="{{ component.file_content.url }}">Click here to download</a>
+                        {% endif %}
+                        {% if component.type == 'video' %}
+                            <p>Component {{ component.order }} :{{ component.title }}</p>
+                            {% load embed_video_tags %}
+                            {% video component.video_url as my_video %}
+
+                            {% video my_video '640x480' %}
+                            {% endvideo %}
+                        {% endif %}
+                        <hr>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <input type="hidden" name="change" value="change">
+            <input type="submit" value="Confirm"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

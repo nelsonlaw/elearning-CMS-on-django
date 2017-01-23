@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_instructor.html" %}
+
+    <article>
+        <form method="post" action="/create/">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.title.label_tag }}</td>
+                    <td>{{ form.title }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.description.label_tag }}</td>
+                    <td>{{ form.description }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.open.label_tag }}</td>
+                    <td>{{ form.open }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.category.label_tag }}</td>
+                    <td>{{ form.category }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="create"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

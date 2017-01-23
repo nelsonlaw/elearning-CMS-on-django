@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav.html" %}
+
+    <article>
+        <h1>{{ select_category.get_category_name_display  }}</h1>
+        <div class="flexbox">
+            {% for item in course_in_category %}
+                <div class="course_container">
+                <a href="/course/{{ item.course_id }}">{{ item.title }}</a>
+                <a class="enrol" href="/enrol/{{ item.course_id }}">Enrol/Retake</a>
+                <p>{{ item.description }}</p>
+                <p>Instructor : {{ item.instructor }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

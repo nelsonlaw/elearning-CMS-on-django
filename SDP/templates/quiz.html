@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+
+    {% include "nav.html" %}
+
+    <article>
+
+        <h1>{{ select_course.title }}</h1>
+
+        {% for module in module_with_components %}
+            <div class="module">
+                <h3>Module {{ module.0.order }}</h3>
+                {% for component in module.1 %}
+                    {% if component.type == 'text' %}
+                        <p>{{ component.title }}</p>
+                        <p>{{ component.text_content }}</p>
+                    {% endif %}
+                    {% if component.type == 'image' %}
+                        <p>{{ component.title }}</p>
+                        <img width="100%" src="{{ component.image_content.url }}">
+                    {% endif %}
+                    {% if component.type == 'file' %}
+                        <a href="{{ component.file_content.url }}">{{ component.title }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

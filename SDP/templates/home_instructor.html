@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_instructor.html" %}
+
+    <article>
+        <h1>Current teaching course</h1>
+        <div class="flexbox">
+            {% for course in teaching_courses %}
+                <div class="course_container">
+                    <a href="/modify_course/{{ course.course_id }}">{{ course.title }}</a>
+                    <p>Description : {{ course.description }}</p>
+                    <p>Instructor : {{ course.instructor }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

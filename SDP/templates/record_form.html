@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_hr.html" %}
+
+    <article>
+        <form method="post" action="/record/">
+            {% csrf_token %}
+            <h2>{{ course_title }}</h2>
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Check user's completed courses"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

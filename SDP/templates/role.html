@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+
+    <div class="login_box">
+        <table>
+
+            <tr><a href="/home">Login as participant.</a></tr>
+            {% if is_instructor == True %}
+                <tr><a href="/home_instructor">Login as instructor.</a></tr>
+            {% endif %}
+            {% if is_HR == True %}
+                <tr><a href="/home_hr">Login as HR.</a></tr>
+            {% endif %}
+            {% if is_admin == True %}
+                <tr><a href="/home_admin">Login as administrator.</a></tr>
+            {% endif %}
+        </table>
+    </div>
+
+
+</div>
+
+</body>
+</html>
+

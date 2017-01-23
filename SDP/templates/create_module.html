@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_instructor.html" %}
+
+    <article>
+        <form method="post" action="/create_module/{{ course_id }}">
+            {% csrf_token %}
+            <h2>{{ course_title }}</h2>
+            <table>
+                <tr>
+                    <td>{{ form.title.label_tag }}</td>
+                    <td>{{ form.title }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="create"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

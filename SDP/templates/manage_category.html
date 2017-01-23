@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_administrator.html" %}
+
+    <article>
+        <form method="post" action="/manage_category/">
+            {% csrf_token %}
+            <h2>Add a category</h2>
+            <table>
+                <tr>
+                    <td>{{ form.catname.label_tag }}</td>
+                    <td>{{ form.catname }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Create"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

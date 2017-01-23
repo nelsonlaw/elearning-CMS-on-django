@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+
+    {% include "nav.html" %}
+
+    <article>
+
+        <h1>{{ select_course.title }}</h1>
+
+        {% for module in module_with_components %}
+            <div class="module">
+                <h2>Module {{ module.0.order }}:{{ module.0.title }} | Progress {{ module.0.order }}/{{ total }}</h2>
+                <hr>
+                {% for component in module.1 %}
+                    {% if component.type == 'text' %}
+                        <p>Component {{ component.order }} : {{ component.title }}</p>
+                        <p>{{ component.text_content }}</p>
+                    {% endif %}
+                    {% if component.type == 'image' %}
+                        <p>Component {{ component.order }} : {{ component.title }}</p>
+                        <img width="100%" src="{{ component.image_content.url }}">
+                    {% endif %}
+                    {% if component.type == 'file' %}
+                        <p>Component {{ component.order }} :</p>
+                        <a href="{{ component.file_content.url }}">{{ component.title }}</a>
+                    {% endif %}
+                    {% if component.type == 'video' %}
+                        <p>Component {{ component.order }} :{{ component.title }}</p>
+                        {% load embed_video_tags %}
+                        {% video component.video_url as my_video %}
+
+                        {% video my_video '640x480' %}
+                        {% endvideo %}
+                    {% endif %}
+                    {% if component.type == 'quiz' %}
+                        <p>Component {{ component.order }} :Quiz {{ component.title }}</p>
+                        <p>Question:{{ component.question }}</p>
+                        <textarea rows="10" cols="100">Write your answer here.</textarea>
+                        <br>
+                        <a class="answer_click" href="#">Submit answer</a>
+                        <p class="answer">Reference answer:{{ component.answer }}</p>
+                        <a class="next" href="/next_module/{{ select_course.course_id }}">Next module</a>
+                    {% endif %}
+                    <hr>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        {% if not module_with_components %}
+            No module.
+        {% endif %}
+        <hr>
+        <a href="/drop/{{ select_course.course_id }}">Drop this course</a>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+

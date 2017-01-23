@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+
+<div class="container">
+
+    {% include "header.html" %}
+
+    {% include "nav_administrator.html" %}
+
+    <article>
+        <form method="post" action="/designate/">
+            {% csrf_token %}
+            <h2>Designate a user as instructor</h2>
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="designate"/>
+        </form>
+    </article>
+
+
+</div>
+
+</body>
+</html>
+
